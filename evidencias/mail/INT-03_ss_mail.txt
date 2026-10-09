@@ -1,0 +1,52 @@
+# INT-03_ss_mail
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:41:09 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ ss -lntup
+Netid State  Recv-Q Send-Q                         Local Address:Port Peer Address:PortProcess                                                   
+udp   UNCONN 0      0                                  10.0.2.15:53        0.0.0.0:*    users:(("named",pid=2572,fd=34))                         
+udp   UNCONN 0      0                                  10.0.2.15:53        0.0.0.0:*    users:(("named",pid=2572,fd=35))                         
+udp   UNCONN 0      0                                  127.0.0.1:53        0.0.0.0:*    users:(("named",pid=2572,fd=29))                         
+udp   UNCONN 0      0                                  127.0.0.1:53        0.0.0.0:*    users:(("named",pid=2572,fd=28))                         
+udp   UNCONN 0      0                                 127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=554,fd=16))                
+udp   UNCONN 0      0                              127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=554,fd=14))                
+udp   UNCONN 0      0                           10.0.2.15%enp0s3:68        0.0.0.0:*    users:(("systemd-network",pid=544,fd=23))                
+udp   UNCONN 0      0                                      [::1]:53           [::]:*    users:(("named",pid=2572,fd=38))                         
+udp   UNCONN 0      0                                      [::1]:53           [::]:*    users:(("named",pid=2572,fd=39))                         
+udp   UNCONN 0      0          [fe80::a00:27ff:fe39:80a8]%enp0s3:53           [::]:*    users:(("named",pid=2572,fd=46))                         
+udp   UNCONN 0      0          [fe80::a00:27ff:fe39:80a8]%enp0s3:53           [::]:*    users:(("named",pid=2572,fd=47))                         
+udp   UNCONN 0      0      [fd17:625c:f037:2:a00:27ff:fe39:80a8]:53           [::]:*    users:(("named",pid=2572,fd=42))                         
+udp   UNCONN 0      0      [fd17:625c:f037:2:a00:27ff:fe39:80a8]:53           [::]:*    users:(("named",pid=2572,fd=43))                         
+tcp   LISTEN 0      10                                 10.0.2.15:53        0.0.0.0:*    users:(("named",pid=2572,fd=36))                         
+tcp   LISTEN 0      10                                 10.0.2.15:53        0.0.0.0:*    users:(("named",pid=2572,fd=37))                         
+tcp   LISTEN 0      100                                  0.0.0.0:587       0.0.0.0:*    users:(("smtpd",pid=3324,fd=6),("master",pid=3007,fd=94))
+tcp   LISTEN 0      5                                  127.0.0.1:953       0.0.0.0:*    users:(("named",pid=2572,fd=50))                         
+tcp   LISTEN 0      5                                  127.0.0.1:953       0.0.0.0:*    users:(("named",pid=2572,fd=51))                         
+tcp   LISTEN 0      4096                              127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=554,fd=17))                
+tcp   LISTEN 0      100                                  0.0.0.0:993       0.0.0.0:*    users:(("dovecot",pid=2759,fd=37))                       
+tcp   LISTEN 0      100                                  0.0.0.0:25        0.0.0.0:*    users:(("master",pid=3007,fd=13))                        
+tcp   LISTEN 0      4096                                 0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=1156,fd=3),("systemd",pid=1,fd=206))  
+tcp   LISTEN 0      100                                  0.0.0.0:143       0.0.0.0:*    users:(("dovecot",pid=2759,fd=36))                       
+tcp   LISTEN 0      4096                           127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=554,fd=15))                
+tcp   LISTEN 0      10                                 127.0.0.1:53        0.0.0.0:*    users:(("named",pid=2572,fd=32))                         
+tcp   LISTEN 0      10                                 127.0.0.1:53        0.0.0.0:*    users:(("named",pid=2572,fd=30))                         
+tcp   LISTEN 0      2048                                 0.0.0.0:389       0.0.0.0:*    users:(("slapd",pid=2403,fd=8))                          
+tcp   LISTEN 0      5                                      [::1]:953          [::]:*    users:(("named",pid=2572,fd=53))                         
+tcp   LISTEN 0      5                                      [::1]:953          [::]:*    users:(("named",pid=2572,fd=52))                         
+tcp   LISTEN 0      4096                                    [::]:22           [::]:*    users:(("sshd",pid=1156,fd=4),("systemd",pid=1,fd=207))  
+tcp   LISTEN 0      10         [fe80::a00:27ff:fe39:80a8]%enp0s3:53           [::]:*    users:(("named",pid=2572,fd=49))                         
+tcp   LISTEN 0      10         [fe80::a00:27ff:fe39:80a8]%enp0s3:53           [::]:*    users:(("named",pid=2572,fd=48))                         
+tcp   LISTEN 0      10                                     [::1]:53           [::]:*    users:(("named",pid=2572,fd=40))                         
+tcp   LISTEN 0      10                                     [::1]:53           [::]:*    users:(("named",pid=2572,fd=41))                         
+tcp   LISTEN 0      2048                                    [::]:389          [::]:*    users:(("slapd",pid=2403,fd=9))                          
+tcp   LISTEN 0      10     [fd17:625c:f037:2:a00:27ff:fe39:80a8]:53           [::]:*    users:(("named",pid=2572,fd=45))                         
+tcp   LISTEN 0      10     [fd17:625c:f037:2:a00:27ff:fe39:80a8]:53           [::]:*    users:(("named",pid=2572,fd=44))                         
+
+$ systemctl is-enabled postfix dovecot
+enabled
+enabled
+
+$ systemctl is-active postfix dovecot
+active
+active
+

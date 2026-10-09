@@ -1,0 +1,7 @@
+# Autenticación por "bind": Dovecot intenta un bind LDAP con el DN del
+# usuario y la contraseña escrita en Thunderbird. Si LDAP acepta -> login OK.
+uris = ldap://ldap.restaurante.redes.test
+ldap_version = 3
+base = ou=People,dc=restaurante,dc=redes,dc=test
+auth_bind = yes
+auth_bind_userdn = uid=%n,ou=People,dc=restaurante,dc=redes,dc=test

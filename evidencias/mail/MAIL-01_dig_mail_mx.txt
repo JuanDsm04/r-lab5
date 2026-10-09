@@ -1,0 +1,51 @@
+# MAIL-01_dig_mail_mx
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:40:50 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ dig mail.restaurante.redes.test A
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> mail.restaurante.redes.test A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9613
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;mail.restaurante.redes.test.	IN	A
+
+;; ANSWER SECTION:
+mail.restaurante.redes.test. 300 IN	A	10.0.2.15
+
+;; Query time: 5 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Oct 09 04:40:50 UTC 2026
+;; MSG SIZE  rcvd: 72
+
+
+$ dig restaurante.redes.test MX
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> restaurante.redes.test MX
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 18619
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;restaurante.redes.test.		IN	MX
+
+;; ANSWER SECTION:
+restaurante.redes.test.	300	IN	MX	10 mail.restaurante.redes.test.
+
+;; ADDITIONAL SECTION:
+mail.restaurante.redes.test. 300 IN	A	10.0.2.15
+
+;; Query time: 5 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Oct 09 04:40:50 UTC 2026
+;; MSG SIZE  rcvd: 88
+
+

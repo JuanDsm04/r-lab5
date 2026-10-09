@@ -1,0 +1,72 @@
+# 2.3.21 (47349e2482): /etc/dovecot/dovecot.conf
+# Pigeonhole version 0.5.21 (f6cd4b8e)
+# OS: Linux 6.8.0-146-generic x86_64 Ubuntu 24.04.5 LTS 
+# Hostname: mail.restaurante.redes.test
+auth_mechanisms = plain login
+auth_username_format = %Ln
+auth_verbose = yes
+disable_plaintext_auth = no
+first_valid_uid = 5000
+listen = *
+mail_location = maildir:~/Maildir
+namespace inbox {
+  inbox = yes
+  location = 
+  mailbox Drafts {
+    auto = subscribe
+    special_use = \Drafts
+  }
+  mailbox Junk {
+    auto = subscribe
+    special_use = \Junk
+  }
+  mailbox Sent {
+    auto = subscribe
+    special_use = \Sent
+  }
+  mailbox Trash {
+    auto = subscribe
+    special_use = \Trash
+  }
+  prefix = 
+}
+passdb {
+  args = /etc/dovecot/dovecot-ldap.conf.ext
+  driver = ldap
+}
+protocols = imap lmtp
+service auth {
+  unix_listener /var/spool/postfix/private/auth {
+    group = postfix
+    mode = 0660
+    user = postfix
+  }
+  unix_listener auth-userdb {
+    mode = 0600
+    user = vmail
+  }
+}
+service imap-login {
+  inet_listener imap {
+    port = 143
+  }
+  inet_listener imaps {
+    port = 993
+  }
+}
+service lmtp {
+  unix_listener /var/spool/postfix/private/dovecot-lmtp {
+    group = postfix
+    mode = 0600
+    user = postfix
+  }
+}
+ssl_cert = </etc/ssl/certs/ssl-cert-snakeoil.pem
+ssl_key = # hidden, use -P to show it
+userdb {
+  args = uid=vmail gid=vmail home=/var/vmail/%n allow_all_users=yes
+  driver = static
+}
+protocol lmtp {
+  postmaster_address = postmaster@restaurante.redes.test
+}

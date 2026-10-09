@@ -1,0 +1,16 @@
+# MAIL-04_auth_invalida
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:40:52 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ doveadm auth test prueba1 <contraseña incorrecta>
+passdb: prueba1 auth failed
+extra fields:
+  user=prueba1
+
+$ curl imap://mail.restaurante.redes.test/ --user prueba1:<incorrecta>
+curl: (67) Login denied
+
+(curl exit 67 = login denied)
+--- log (auth failed|password mismatch|Invalid credentials)
+2026-10-09T04:40:56.450880+00:00 mail dovecot: imap-login: Disconnected: Connection closed (auth failed, 1 attempts in 2 secs): user=<prueba1>, method=PLAIN, rip=10.0.2.15, lip=10.0.2.15, secured, session=<QZ0q9GBdLq8KAAIP>
+

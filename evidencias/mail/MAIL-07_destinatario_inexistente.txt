@@ -1,0 +1,62 @@
+# MAIL-07_destinatario_inexistente
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:41:07 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ postmap -q noexiste@restaurante.redes.test ldap:/etc/postfix/ldap-users.cf   (sin resultado = no existe)
+
+$ swaks --server mail.restaurante.redes.test --port 587 -tls --auth-user prueba1 --to noexiste@restaurante.redes.test
+=== Trying mail.restaurante.redes.test:587...
+=== Connected to mail.restaurante.redes.test.
+<-  220 mail.restaurante.redes.test ESMTP Postfix (Ubuntu)
+ -> EHLO mail.restaurante.redes.test
+<-  250-mail.restaurante.redes.test
+<-  250-PIPELINING
+<-  250-SIZE 10240000
+<-  250-VRFY
+<-  250-ETRN
+<-  250-STARTTLS
+<-  250-AUTH PLAIN LOGIN
+<-  250-AUTH=PLAIN LOGIN
+<-  250-ENHANCEDSTATUSCODES
+<-  250-8BITMIME
+<-  250-DSN
+<-  250-SMTPUTF8
+<-  250 CHUNKING
+ -> STARTTLS
+<-  220 2.0.0 Ready to start TLS
+=== TLS started with cipher TLSv1.3:TLS_AES_256_GCM_SHA384:256
+=== TLS client certificate not requested and not sent
+=== TLS no client certificate set
+=== TLS peer[0]   subject=[/CN=mail.restaurante.redes.test]
+===               commonName=[mail.restaurante.redes.test], subjectAltName=[DNS:mail.restaurante.redes.test] notAfter=[2036-10-04T00:47:13Z]
+=== TLS peer certificate passed CA verification, passed host verification (using host mail.restaurante.redes.test to verify)
+ ~> EHLO mail.restaurante.redes.test
+<~  250-mail.restaurante.redes.test
+<~  250-PIPELINING
+<~  250-SIZE 10240000
+<~  250-VRFY
+<~  250-ETRN
+<~  250-AUTH PLAIN LOGIN
+<~  250-AUTH=PLAIN LOGIN
+<~  250-ENHANCEDSTATUSCODES
+<~  250-8BITMIME
+<~  250-DSN
+<~  250-SMTPUTF8
+<~  250 CHUNKING
+ ~> AUTH LOGIN
+<~  334 VXNlcm5hbWU6
+ ~> cHJ1ZWJhMQ==
+<~  334 UGFzc3dvcmQ6
+ ~> ****
+<~  235 2.7.0 Authentication successful
+ ~> MAIL FROM:<prueba1@restaurante.redes.test>
+<~  250 2.1.0 Ok
+ ~> RCPT TO:<noexiste@restaurante.redes.test>
+<~* 550 5.1.1 <noexiste@restaurante.redes.test>: Recipient address rejected: User unknown in virtual mailbox table
+ ~> QUIT
+<~  221 2.0.0 Bye
+=== Connection closed with remote host.
+
+--- log (User unknown)
+2026-10-09T04:41:08.379162+00:00 mail postfix/submission/smtpd[3324]: NOQUEUE: reject: RCPT from mail.restaurante.redes.test[10.0.2.15]: 550 5.1.1 <noexiste@restaurante.redes.test>: Recipient address rejected: User unknown in virtual mailbox table; from=<prueba1@restaurante.redes.test> to=<noexiste@restaurante.redes.test> proto=ESMTP helo=<mail.restaurante.redes.test>
+

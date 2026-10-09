@@ -1,0 +1,19 @@
+# MAIL-03_auth_valida
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:40:50 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ doveadm auth test prueba1 ****
+passdb: prueba1 auth succeeded
+extra fields:
+  user=prueba1
+
+$ curl imap://mail.restaurante.redes.test/ --user prueba1:**** (LOGIN + LIST)
+* LIST (\HasNoChildren \Drafts) "." Drafts
+* LIST (\HasNoChildren \Sent) "." Sent
+* LIST (\HasNoChildren \Trash) "." Trash
+* LIST (\HasNoChildren \Junk) "." Junk
+* LIST (\HasNoChildren) "." INBOX
+
+--- log (imap-login: Login: user=<prueba1>)
+2026-10-09T04:40:51.325588+00:00 mail dovecot: imap-login: Login: user=<prueba1>, method=PLAIN, rip=10.0.2.15, lip=10.0.2.15, mpid=3304, secured, session=<P0/y82BddtgKAAIP>
+

@@ -49,6 +49,11 @@ getent passwd vmail >/dev/null || useradd -u $VMAIL_UID -g vmail -d /var/vmail -
 mkdir -p /var/vmail && chown -R vmail:vmail /var/vmail && chmod 770 /var/vmail
 
 # --- 4. Postfix -------------------------------------------------------
+# Respaldo de la configuración original (regla 7 de CLAUDE.md)
+for f in main.cf master.cf; do
+    [[ -f /etc/postfix/$f.orig ]] || cp /etc/postfix/$f /etc/postfix/$f.orig
+done
+
 cat > /etc/postfix/ldap-users.cf <<EOF
 # Valida que el destinatario exista en OpenLDAP (atributo mail)
 server_host = ldap://${LDAP_HOST}
@@ -219,7 +224,7 @@ systemctl restart dovecot postfix
 
 echo
 echo "==> Listo. Verificaciones rápidas:"
-ss -lntp | grep -E ':(25|587|143|993)\s' || true
+ss -lntup | grep -E ':(25|587|143|993)\s' || true
 echo "--- Búsqueda LDAP desde Postfix (debe imprimir un correo):"
 FIRST=$(ldapsearch -x -LLL -H "ldap://${LDAP_HOST}" -b "$PEOPLE_DN" mail 2>/dev/null | awk '/^mail:/{print $2; exit}' || true)
 if [[ -n "${FIRST:-}" ]]; then

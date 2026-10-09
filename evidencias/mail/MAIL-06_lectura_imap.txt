@@ -1,0 +1,35 @@
+# MAIL-06_lectura_imap
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:41:06 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ curl imap://mail.restaurante.redes.test/INBOX --user prueba2:**** -X 'UID SEARCH SUBJECT ...'
+* SEARCH 1
+
+$ curl imap://mail.restaurante.redes.test/INBOX;UID=1 --user prueba2:****  (FETCH del mensaje)
+Return-Path: <prueba1@restaurante.redes.test>
+Delivered-To: prueba2@restaurante.redes.test
+Received: from mail.restaurante.redes.test
+	by mail.restaurante.redes.test with LMTP
+	id HjjgDF9wyGoEDQAAvhlYyQ
+	(envelope-from <prueba1@restaurante.redes.test>)
+	for <prueba2@restaurante.redes.test>; Fri, 09 Oct 2026 04:41:03 +0000
+Received: from mail.restaurante.redes.test (mail.restaurante.redes.test [10.0.2.15])
+	by mail.restaurante.redes.test (Postfix) with ESMTPSA id 087D260685
+	for <prueba2@restaurante.redes.test>; Fri,  9 Oct 2026 04:41:02 +0000 (UTC)
+Date: Fri, 09 Oct 2026 04:40:58 +0000
+To: prueba2@restaurante.redes.test
+From: prueba1@restaurante.redes.test
+Subject: Prueba Lab5 MAIL-05 044057
+Message-Id: <20261009044058.003323@mail.restaurante.redes.test>
+X-Mailer: swaks v20240103.0 jetmore.org/john/code/swaks/
+
+Mensaje de prueba MAIL-05 enviado por prueba1 a prueba2
+
+
+
+--- log (imap\(prueba2\)|imap-login: Login: user=<prueba2>)
+2026-10-09T04:41:06.558157+00:00 mail dovecot: imap-login: Login: user=<prueba2>, method=PLAIN, rip=10.0.2.15, lip=10.0.2.15, mpid=3349, secured, session=<wT3b9GBdqKYKAAIP>
+2026-10-09T04:41:06.579531+00:00 mail dovecot: imap(prueba2)<3349><wT3b9GBdqKYKAAIP>: Disconnected: Logged out in=84 out=896 deleted=0 expunged=0 trashed=0 hdr_count=0 hdr_bytes=0 body_count=0 body_bytes=0
+2026-10-09T04:41:06.724602+00:00 mail dovecot: imap-login: Login: user=<prueba2>, method=PLAIN, rip=10.0.2.15, lip=10.0.2.15, mpid=3353, secured, session=<U8rd9GBdsKYKAAIP>
+2026-10-09T04:41:06.739561+00:00 mail dovecot: imap(prueba2)<3353><U8rd9GBdsKYKAAIP>: Disconnected: Logged out in=55 out=1832 deleted=0 expunged=0 trashed=0 hdr_count=0 hdr_bytes=0 body_count=1 body_bytes=901
+

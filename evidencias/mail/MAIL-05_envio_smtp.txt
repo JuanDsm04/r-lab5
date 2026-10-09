@@ -1,0 +1,82 @@
+# MAIL-05_envio_smtp
+# host: mail.restaurante.redes.test   fecha: 2026-10-09 04:40:57 UTC
+# MODO INDIVIDUAL: DNS (BIND9) y LDAP (OpenLDAP) de prueba locales en esta VM, no los servidores del grupo
+
+$ postmap -q prueba2@restaurante.redes.test ldap:/etc/postfix/ldap-users.cf   (destinatario existe en LDAP)
+prueba2@restaurante.redes.test
+
+$ swaks --server mail.restaurante.redes.test --port 587 -tls --auth-user prueba1 --from prueba1@restaurante.redes.test --to prueba2@restaurante.redes.test
+=== Trying mail.restaurante.redes.test:587...
+=== Connected to mail.restaurante.redes.test.
+<-  220 mail.restaurante.redes.test ESMTP Postfix (Ubuntu)
+ -> EHLO mail.restaurante.redes.test
+<-  250-mail.restaurante.redes.test
+<-  250-PIPELINING
+<-  250-SIZE 10240000
+<-  250-VRFY
+<-  250-ETRN
+<-  250-STARTTLS
+<-  250-AUTH PLAIN LOGIN
+<-  250-AUTH=PLAIN LOGIN
+<-  250-ENHANCEDSTATUSCODES
+<-  250-8BITMIME
+<-  250-DSN
+<-  250-SMTPUTF8
+<-  250 CHUNKING
+ -> STARTTLS
+<-  220 2.0.0 Ready to start TLS
+=== TLS started with cipher TLSv1.3:TLS_AES_256_GCM_SHA384:256
+=== TLS client certificate not requested and not sent
+=== TLS no client certificate set
+=== TLS peer[0]   subject=[/CN=mail.restaurante.redes.test]
+===               commonName=[mail.restaurante.redes.test], subjectAltName=[DNS:mail.restaurante.redes.test] notAfter=[2036-10-04T00:47:13Z]
+=== TLS peer certificate passed CA verification, passed host verification (using host mail.restaurante.redes.test to verify)
+ ~> EHLO mail.restaurante.redes.test
+<~  250-mail.restaurante.redes.test
+<~  250-PIPELINING
+<~  250-SIZE 10240000
+<~  250-VRFY
+<~  250-ETRN
+<~  250-AUTH PLAIN LOGIN
+<~  250-AUTH=PLAIN LOGIN
+<~  250-ENHANCEDSTATUSCODES
+<~  250-8BITMIME
+<~  250-DSN
+<~  250-SMTPUTF8
+<~  250 CHUNKING
+ ~> AUTH LOGIN
+<~  334 VXNlcm5hbWU6
+ ~> cHJ1ZWJhMQ==
+<~  334 UGFzc3dvcmQ6
+ ~> ****
+<~  235 2.7.0 Authentication successful
+ ~> MAIL FROM:<prueba1@restaurante.redes.test>
+<~  250 2.1.0 Ok
+ ~> RCPT TO:<prueba2@restaurante.redes.test>
+<~  250 2.1.5 Ok
+ ~> DATA
+<~  354 End data with <CR><LF>.<CR><LF>
+ ~> Date: Fri, 09 Oct 2026 04:40:58 +0000
+ ~> To: prueba2@restaurante.redes.test
+ ~> From: prueba1@restaurante.redes.test
+ ~> Subject: Prueba Lab5 MAIL-05 044057
+ ~> Message-Id: <20261009044058.003323@mail.restaurante.redes.test>
+ ~> X-Mailer: swaks v20240103.0 jetmore.org/john/code/swaks/
+ ~> 
+ ~> Mensaje de prueba MAIL-05 enviado por prueba1 a prueba2
+ ~> 
+ ~> 
+ ~> .
+<~  250 2.0.0 Ok: queued as 087D260685
+ ~> QUIT
+<~  221 2.0.0 Bye
+=== Connection closed with remote host.
+
+--- log (sasl_username=prueba1|to=<prueba2@restaurante.redes.test>)
+2026-10-09T04:41:03.040380+00:00 mail postfix/submission/smtpd[3324]: 087D260685: client=mail.restaurante.redes.test[10.0.2.15], sasl_method=LOGIN, sasl_username=prueba1
+2026-10-09T04:41:03.328101+00:00 mail postfix/lmtp[3330]: 087D260685: to=<prueba2@restaurante.redes.test>, relay=mail.restaurante.redes.test[private/dovecot-lmtp], delay=0.35, delays=0.11/0.06/0.07/0.11, dsn=2.0.0, status=sent (250 2.0.0 <prueba2@restaurante.redes.test> HjjgDF9wyGoEDQAAvhlYyQ Saved)
+
+$ ls -l /var/vmail/prueba2/Maildir/new/   (entrega al buzón)
+total 4
+-rw------- 1 vmail vmail 881 Oct  9 04:41 1791520863.M222424P3332.mail.restaurante.redes.test,S=881,W=901
+

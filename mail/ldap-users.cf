@@ -1,0 +1,8 @@
+# Valida que el destinatario exista en OpenLDAP (atributo mail)
+server_host = ldap://ldap.restaurante.redes.test
+version = 3
+search_base = ou=People,dc=restaurante,dc=redes,dc=test
+scope = one
+query_filter = (mail=%s)
+result_attribute = mail
+bind = no
