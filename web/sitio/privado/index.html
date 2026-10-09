@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área protegida | Restaurante</title>
+  <style>
+    :root { --fondo:#f7f3ec; --tinta:#2b2118; --acento:#8c2f1b; --linea:#d9cfc0; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--fondo); color:var(--tinta);
+           font-family: Georgia, "Times New Roman", serif; line-height:1.6; }
+    main { max-width: 42rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    h1 { font-size: 2rem; line-height:1.15; margin:0 0 1rem; }
+    .usuario { border:1px solid var(--linea); padding:.75rem 1rem; background:#fff; }
+    a { color: var(--acento); }
+    a:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Acceso concedido</h1>
+    <p class="usuario">Sesión iniciada como <strong><!--#echo var="REMOTE_USER" --></strong>.
+       Tus credenciales fueron validadas contra OpenLDAP
+       (ldap.restaurante.redes.test).</p>
+    <p>Solo los usuarios del directorio del grupo ven esta página.</p>
+    <p><a href="/">Volver al inicio</a></p>
+  </main>
+</body>
+</html>

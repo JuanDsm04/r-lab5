@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadena de restaurantes | Laboratorio 5 de Redes</title>
+  <style>
+    :root { --fondo:#f7f3ec; --tinta:#2b2118; --acento:#8c2f1b; --linea:#d9cfc0; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--fondo); color:var(--tinta);
+           font-family: Georgia, "Times New Roman", serif; line-height:1.6; }
+    main { max-width: 42rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    h1 { font-size: 2.2rem; line-height:1.15; margin:0 0 .5rem; }
+    h2 { font-size: 1.15rem; margin: 2.25rem 0 .5rem; padding-top:1rem; border-top:1px solid var(--linea); }
+    p, li { max-width: 62ch; }
+    ul { padding-left: 1.2rem; }
+    a { color: var(--acento); }
+    a:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; }
+    .nota { color:#6b5d4f; font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Cadena de restaurantes</h1>
+    <p>Grupo de Redes, CC3067, ciclo 2 de 2026. Universidad del Valle de Guatemala.</p>
+
+    <h2>Integrantes</h2>
+    <!-- Verifica que esta lista coincida con los integrantes reales del grupo -->
+    <ul>
+      <li>Nils Muralles</li>
+      <li>Isabella Recinos</li>
+      <li>Diego Flores</li>
+      <li>Pablo Méndez</li>
+      <li>Juan Solís</li>
+      <li>Víctor Pérez</li>
+    </ul>
+
+    <h2>Servicios de la red</h2>
+    <p>Este sitio es el servidor web del Laboratorio 5. Funciona junto con DNS (BIND9),
+       directorio de usuarios (OpenLDAP), correo (Postfix y Dovecot) y FTP (vsftpd),
+       todos bajo la zona <strong>restaurante.redes.test</strong>.</p>
+
+    <h2>Área protegida</h2>
+    <p>La sección privada pide usuario y contraseña del directorio LDAP del grupo.</p>
+    <p><a href="/privado/">Entrar al área protegida</a></p>
+
+    <p class="nota">Servidor: www.restaurante.redes.test</p>
+  </main>
+</body>
+</html>
