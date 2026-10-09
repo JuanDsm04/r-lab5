@@ -1,0 +1,2 @@
+# Mantiene finales de línea LF para que los scripts funcionen en Ubuntu.
+* text=auto eol=lf
