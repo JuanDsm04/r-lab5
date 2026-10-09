@@ -1,0 +1,23 @@
+; /etc/bind/zones/db.restaurante.redes.test
+
+$ORIGIN restaurante.redes.test.
+$TTL 300
+
+@       IN  SOA ns1.restaurante.redes.test. admin.restaurante.redes.test. (
+                2026100501  ; serial AAAAMMDDnn
+                3600        ; refresh
+                900         ; retry
+                604800      ; expire
+                300 )       ; TTL negativo (cache de NXDOMAIN)
+
+; Servidor de nombres y correo de la zona
+@       IN  NS  ns1.restaurante.redes.test.
+@       IN  MX  10 mail.restaurante.redes.test.
+
+; Registros A
+ns1      IN  A  192.168.50.10
+ldap     IN  A  192.168.50.11
+www      IN  A  192.168.50.12
+mail     IN  A  192.168.50.13
+ftp      IN  A  192.168.50.14
+cliente  IN  A  192.168.50.20

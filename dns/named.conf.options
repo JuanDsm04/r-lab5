@@ -1,0 +1,23 @@
+// /etc/bind/named.conf.options
+// ns1.restaurante.redes.test
+
+options {
+    directory "/var/cache/bind";
+
+    // Escuchar en todas las interfaces (puerto 53 udp/tcp)
+    listen-on { any; };
+    listen-on-v6 { any; };
+
+    // Solo la LAN puede consultar
+    allow-query { localhost; localnets; };
+
+    // Recursion limitada a la LAN
+    recursion yes;
+    allow-recursion { localhost; localnets; };
+    forwarders { 8.8.8.8; 1.1.1.1; };
+
+    // Sin transferencias de zona
+    allow-transfer { none; };
+
+    dnssec-validation auto;
+};
