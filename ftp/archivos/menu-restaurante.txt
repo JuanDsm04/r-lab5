@@ -1,0 +1,18 @@
+RESTAURANTE.REDES.TEST - MENU DEL DIA
+Archivo de prueba del servidor FTP (Laboratorio 5, CC3067 Redes)
+
+Entradas
+  - Sopa de tortilla ............ Q35.00
+  - Ensalada de la casa ......... Q30.00
+
+Platos fuertes
+  - Pepian de pollo ............. Q65.00
+  - Hilachas .................... Q60.00
+  - Pasta al pesto .............. Q55.00
+
+Postres
+  - Rellenitos de platano ....... Q20.00
+  - Flan de coco ................ Q22.00
+
+Este archivo se usa en la prueba FTP-07: al descargarlo, su SHA-256
+debe coincidir con el de la copia en el repositorio (ftp/archivos/).
