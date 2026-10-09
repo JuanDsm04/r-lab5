@@ -1,0 +1,9 @@
+# uid,nombre,apellido,password
+# Una línea por integrante. Contraseñas EXCLUSIVAS del laboratorio (nada personal).
+# El correo se arma solo: <uid>@restaurante.redes.test
+nmuralles,Nils,Muralles,CAMBIAR
+irecinos,Isabella,Recinos,CAMBIAR
+dflores,Diego,Flores,CAMBIAR
+pmendez,Pablo,Méndez,CAMBIAR
+jsolis,Juan,Solís,CAMBIAR
+vperez,Víctor,Pérez,CAMBIAR

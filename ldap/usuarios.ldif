@@ -1,0 +1,110 @@
+# Usuarios LDAP - Laboratorio 5 - restaurante.redes.test
+
+dn: ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=restaurante,dc=redes,dc=test
+objectClass: organizationalUnit
+ou: Groups
+
+dn: uid=nmuralles,ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: nmuralles
+cn: Nils Muralles
+givenName: Nils
+sn: Muralles
+mail: nmuralles@restaurante.redes.test
+userPassword: {SSHA}0EbSCNJgOnKkz3NDKGLZEaVqYLUpTvDJ
+uidNumber: 10001
+gidNumber: 10000
+homeDirectory: /home/nmuralles
+loginShell: /bin/bash
+
+dn: uid=irecinos,ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: irecinos
+cn: Isabella Recinos
+givenName: Isabella
+sn: Recinos
+mail: irecinos@restaurante.redes.test
+userPassword: {SSHA}U8IfGWU6T0YnSq3ILjaXnBi3BFd1pvox
+uidNumber: 10002
+gidNumber: 10000
+homeDirectory: /home/irecinos
+loginShell: /bin/bash
+
+dn: uid=dflores,ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: dflores
+cn: Diego Flores
+givenName: Diego
+sn: Flores
+mail: dflores@restaurante.redes.test
+userPassword: {SSHA}TsAf8Vse7I/NX2jaczl75JuYHaOES7vm
+uidNumber: 10003
+gidNumber: 10000
+homeDirectory: /home/dflores
+loginShell: /bin/bash
+
+dn: uid=pmendez,ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: pmendez
+cn:: UGFibG8gTcOpbmRleg==
+givenName: Pablo
+sn:: TcOpbmRleg==
+mail: pmendez@restaurante.redes.test
+userPassword: {SSHA}xWUWj45UY8dWIDBbQsH3nhwFDhgEqKy6
+uidNumber: 10004
+gidNumber: 10000
+homeDirectory: /home/pmendez
+loginShell: /bin/bash
+
+dn: uid=jsolis,ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: jsolis
+cn:: SnVhbiBTb2zDrXM=
+givenName: Juan
+sn:: U29sw61z
+mail: jsolis@restaurante.redes.test
+userPassword: {SSHA}TdC9KPemtN9ySISEDHjJTCT7DlPbMt4A
+uidNumber: 10005
+gidNumber: 10000
+homeDirectory: /home/jsolis
+loginShell: /bin/bash
+
+dn: uid=vperez,ou=People,dc=restaurante,dc=redes,dc=test
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: vperez
+cn:: VsOtY3RvciBQw6lyZXo=
+givenName:: VsOtY3Rvcg==
+sn:: UMOpcmV6
+mail: vperez@restaurante.redes.test
+userPassword: {SSHA}Zlema5J5pXrPlQfeTTuDgjoeXt6W2P96
+uidNumber: 10006
+gidNumber: 10000
+homeDirectory: /home/vperez
+loginShell: /bin/bash
+
+dn: cn=restaurante,ou=Groups,dc=restaurante,dc=redes,dc=test
+objectClass: posixGroup
+cn: restaurante
+gidNumber: 10000
+memberUid: nmuralles
+memberUid: irecinos
+memberUid: dflores
+memberUid: pmendez
+memberUid: jsolis
+memberUid: vperez
