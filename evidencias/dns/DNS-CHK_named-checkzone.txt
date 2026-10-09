@@ -1,0 +1,4 @@
+# Host: ns1   Fecha: 2026-10-08 20:09:25 CST
+$ named-checkzone restaurante.redes.test /etc/bind/zones/db.restaurante.redes.test
+zone restaurante.redes.test/IN: loaded serial 2026100601
+OK

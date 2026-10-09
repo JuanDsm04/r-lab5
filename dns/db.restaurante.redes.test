@@ -15,9 +15,9 @@ $TTL 300
 @       IN  MX  10 mail.restaurante.redes.test.
 
 ; Registros A
-ns1      IN  A  192.168.50.10
-ldap     IN  A  192.168.50.11
-www      IN  A  192.168.50.12
-mail     IN  A  192.168.50.13
-ftp      IN  A  192.168.50.14
-cliente  IN  A  192.168.50.20
+ns1      IN  A  192.168.1.10
+ldap     IN  A  192.168.1.11
+www      IN  A  192.168.1.12
+mail     IN  A  192.168.1.13
+ftp      IN  A  192.168.1.14
+cliente  IN  A  192.168.1.20

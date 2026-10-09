@@ -1,0 +1,26 @@
+# Host: ns1   Fecha: 2026-10-08 20:09:24 CST
+$ dig @ns1.restaurante.redes.test restaurante.redes.test MX
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> @ns1.restaurante.redes.test restaurante.redes.test MX
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43889
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 30d67c00cf44081e010000006ac84cd4a186d772edf6764e (good)
+;; QUESTION SECTION:
+;restaurante.redes.test.		IN	MX
+
+;; ANSWER SECTION:
+restaurante.redes.test.	300	IN	MX	10 mail.restaurante.redes.test.
+
+;; ADDITIONAL SECTION:
+mail.restaurante.redes.test. 300 IN	A	192.168.1.13
+
+;; Query time: 0 msec
+;; SERVER: 192.168.1.10#53(ns1.restaurante.redes.test) (UDP)
+;; WHEN: Thu Oct 08 20:09:24 CST 2026
+;; MSG SIZE  rcvd: 116

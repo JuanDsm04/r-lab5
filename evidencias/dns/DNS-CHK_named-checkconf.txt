@@ -1,0 +1,3 @@
+# Host: ns1   Fecha: 2026-10-08 20:09:25 CST
+$ named-checkconf
+

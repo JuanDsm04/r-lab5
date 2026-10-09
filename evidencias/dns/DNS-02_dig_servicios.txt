@@ -1,0 +1,16 @@
+# Host: ns1   Fecha: 2026-10-08 20:09:24 CST
+$ dig @ns1.restaurante.redes.test ldap.restaurante.redes.test A +noall +answer
+ldap.restaurante.redes.test. 300 IN	A	192.168.1.11
+
+# Host: ns1   Fecha: 2026-10-08 20:09:24 CST
+$ dig @ns1.restaurante.redes.test www.restaurante.redes.test A +noall +answer
+www.restaurante.redes.test. 300	IN	A	192.168.1.12
+
+# Host: ns1   Fecha: 2026-10-08 20:09:24 CST
+$ dig @ns1.restaurante.redes.test mail.restaurante.redes.test A +noall +answer
+mail.restaurante.redes.test. 300 IN	A	192.168.1.13
+
+# Host: ns1   Fecha: 2026-10-08 20:09:24 CST
+$ dig @ns1.restaurante.redes.test ftp.restaurante.redes.test A +noall +answer
+ftp.restaurante.redes.test. 300	IN	A	192.168.1.14
+

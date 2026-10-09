@@ -1,0 +1,24 @@
+# Host: ns1   Fecha: 2026-10-08 20:09:25 CST
+$ systemctl status named --no-pager
+● named.service - BIND Domain Name Server
+     Loaded: loaded (/usr/lib/systemd/system/named.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-10-08 19:52:36 CST; 16min ago
+       Docs: man:named(8)
+   Main PID: 1250 (named)
+     Status: "running"
+      Tasks: 14 (limit: 4596)
+     Memory: 49.6M (peak: 50.5M)
+        CPU: 5.790s
+     CGroup: /system.slice/named.service
+             └─1250 /usr/sbin/named -f -u bind
+
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'd.gtld-servers.net/AAAA/IN': 1.1.1.1#53
+Oct 08 20:06:17 ns1 named[1250]: network unreachable resolving 'c.gtld-servers.net/A/IN': 2001:500:9f::42#53
+Oct 08 20:06:17 ns1 named[1250]: network unreachable resolving 'c.gtld-servers.net/AAAA/IN': 2001:500:9f::42#53
+Oct 08 20:06:17 ns1 named[1250]: network unreachable resolving 'd.gtld-servers.net/A/IN': 2001:500:9f::42#53
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'ns1.canonical.com/A/IN': 1.1.1.1#53
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'ns2.canonical.com/A/IN': 1.1.1.1#53
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'ns2.canonical.com/AAAA/IN': 1.1.1.1#53
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'ns1.canonical.com/AAAA/IN': 1.1.1.1#53
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'e.gtld-servers.net/A/IN': 1.1.1.1#53
+Oct 08 20:06:17 ns1 named[1250]: timed out resolving 'e.gtld-servers.net/AAAA/IN': 1.1.1.1#53
