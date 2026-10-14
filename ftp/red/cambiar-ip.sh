@@ -2,19 +2,20 @@
 # Asigna la IP fija del servidor FTP mediante netplan.
 #
 # Uso:
-#   sudo bash ftp/red/cambiar-ip.sh <subred> [gateway] [dns]
+#   sudo bash ftp/red/cambiar-ip.sh <subred | ip> [gateway] [dns]
 #
-#   subred   Primeros tres octetos de la red, por ejemplo 192.168.50.
+#   subred   Tres octetos, por ejemplo 192.168.1. Asigna <subred>.14.
+#   ip       IP completa, por ejemplo 192.168.1.37. Asigna esa IP.
 #   gateway  Por defecto <subred>.1.
 #   dns      Por defecto <subred>.10 (ns1).
 #
-# La IP asignada siempre es <subred>.14.
-#
 # Ejemplos:
+#   Octeto por defecto (.14):
+#     sudo bash ftp/red/cambiar-ip.sh 192.168.1
+#   IP asignada por el grupo:
+#     sudo bash ftp/red/cambiar-ip.sh 192.168.1.37
 #   IP provisional, usando el router como DNS:
 #     sudo bash ftp/red/cambiar-ip.sh 192.168.1 192.168.1.1 192.168.1.1
-#   Red del laboratorio:
-#     sudo bash ftp/red/cambiar-ip.sh 192.168.50
 #
 # Variables opcionales: IFACE (interfaz de red) y PREFIJO (por defecto 24).
 # Si se ejecuta por SSH, la sesión se interrumpe al cambiar la IP.
@@ -25,16 +26,24 @@ DOMINIO="restaurante.redes.test"
 PREFIJO="${PREFIJO:-24}"
 DESTINO="/etc/netplan/01-lab5.yaml"
 
-uso() { sed -n '4,20p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
+uso() { sed -n '4,21p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
 error() { printf '\033[31mERROR:\033[0m %s\n' "$*" >&2; exit 1; }
 valida_ip() { [[ "$1" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]] || error "IP inválida: $1"; }
 
 [ "$(id -u)" -eq 0 ] || error "El script debe ejecutarse con sudo."
 [ $# -ge 1 ] || uso
 
-SUBRED="${1%.}"
-[[ "$SUBRED" =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}$ ]] || error "La subred debe tener tres octetos, por ejemplo 192.168.50."
-IP="${SUBRED}.${OCTETO}"
+# El primer argumento puede ser una subred (tres octetos) o una IP completa.
+ARG="${1%.}"
+if [[ "$ARG" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    IP="$ARG"
+    SUBRED="${ARG%.*}"
+elif [[ "$ARG" =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}$ ]]; then
+    SUBRED="$ARG"
+    IP="${SUBRED}.${OCTETO}"
+else
+    error "Indique una subred de tres octetos (192.168.1) o una IP completa (192.168.1.37)."
+fi
 GW="${2:-${SUBRED}.1}"
 DNS="${3:-${SUBRED}.10}"
 valida_ip "$GW"; valida_ip "$DNS"
